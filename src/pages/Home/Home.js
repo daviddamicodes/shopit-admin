@@ -43,12 +43,10 @@ const Home = () => {
     getStats();
   }, [MONTHS]);
 
-  console.log(userStats);
-
   return (
     <div className="home">
       <FeaturedInfo />
-      <Chart data={userData} title="User Analytics" dataKey="Active User" />
+      <Chart data={userStats} title="User Analytics" dataKey="Active User" />
       <div className="homeWidgets">
         <WidgetSm />
         <WidgetLg />

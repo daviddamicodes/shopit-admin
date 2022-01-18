@@ -1,8 +1,18 @@
 import React from "react";
 import "./Topbar.scss";
 import { NotificationsNone, Language, Settings } from "@material-ui/icons";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { userlogout } from "../../redux/apiCalls";
 
 const Topbar = () => {
+  const user = useSelector((state) => state.user.currentUser);
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    userlogout(dispatch);
+  };
+
   return (
     <div className="topbar">
       <div className="topbarWrapper">
@@ -26,6 +36,11 @@ const Topbar = () => {
             alt=""
             className="topAvatar"
           />
+          {user && (
+            <button className="logoutBtn" onClick={handleLogout}>
+              Logout
+            </button>
+          )}
         </div>
       </div>
     </div>
